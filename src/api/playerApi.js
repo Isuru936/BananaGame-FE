@@ -13,12 +13,12 @@
     const axiosInstance = axios.create({
         baseURL: 'http://localhost:5189/api', 
         headers: {
-            'Authorization': `Bearer ${getAuthToken()}`,  // Send only the token in the Authorization header
+            'Authorization': `Bearer ${getAuthToken()}`,
         },
     });
 
     axiosInstance.interceptors.response.use(
-        (response) => response,  // Simply return the response if it's successful
+        (response) => response, 
         (error) => {
             console.log(error.response);
             
@@ -26,7 +26,7 @@
                 const { logout } = useLogout();
                 logout();
             }
-            return Promise.reject(error);  // Return the error for further handling
+            return Promise.reject(error);
         }
     );
 

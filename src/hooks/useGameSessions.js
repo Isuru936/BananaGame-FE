@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { setupAxiosInstance } from "../api/setupAxiosInstance"; // Your custom axios instance setup
-import { useLogout } from "../hooks/useLogout"; // Your custom logout hook
+import { setupAxiosInstance } from "../api/setupAxiosInstance";
+import { useLogout } from "../hooks/useLogout";
 import { toast } from "react-toastify";
 
 export const useGameSessions = () => {

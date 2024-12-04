@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 export default function Index() {
   const navigate = useNavigate();
-  const { startSession } = useGameSessions(); // Get startSession function from the custom hook
+  const { startSession } = useGameSessions();
 
   const startGame = async () => {
     try {
@@ -21,7 +21,7 @@ export default function Index() {
       const sessionData = { PlayerId }; // Data for starting the session
       console.log("Creating game session with data:", sessionData);
 
-      const response = await startSession(sessionData); // Call the custom hook
+      const response = await startSession(sessionData);
       if (response) {
         toast.success("Good Luck!!!");
         navigate("/game");

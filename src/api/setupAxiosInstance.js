@@ -13,9 +13,9 @@ const getAuthToken = () => {
 
 export const setupAxiosInstance = (logoutHandler) => {
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:5189/api", // Replace with your actual API URL
+    baseURL: "http://localhost:5189/api",
     headers: {
-      Authorization: `Bearer ${getAuthToken()}`, // Attach the token to every request header
+      Authorization: `Bearer ${getAuthToken()}`,
       "Content-Type": "application/json",
     },
   });
@@ -32,10 +32,10 @@ export const setupAxiosInstance = (logoutHandler) => {
         console.log("Token expired or invalid. Logging out user.");
         toast.info("Session Expired. Logging you out")
         if (logoutHandler) {
-          logoutHandler(); // Call the logout handler if provided
+          logoutHandler(); 
         }
       }
-      return Promise.reject(error); // Return the error for further handling
+      return Promise.reject(error);
     }
   );
 

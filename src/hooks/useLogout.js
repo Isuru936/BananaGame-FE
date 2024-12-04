@@ -1,4 +1,4 @@
-import { logout } from "../redux/user/userSlice"; // Adjust path as needed
+import { logout } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 

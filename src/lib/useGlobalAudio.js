@@ -1,23 +1,21 @@
 import { useState, useRef, useEffect } from "react";
 
 function useGlobalAudio() {
-  const [volume, setVolume] = useState(0.5); // Default volume (0.0 to 1.0)
-  const audioRef = useRef(null); // Ref for audio element
-  const [isPlaying, setIsPlaying] = useState(false); // Track play/pause state
+  const [volume, setVolume] = useState(0.5); 
+  const audioRef = useRef(null); 
+  const [isPlaying, setIsPlaying] = useState(false); 
 
   useEffect(() => {
-    // Initialize the audio element if not already created
     if (!audioRef.current) {
       audioRef.current = new Audio("/audios/bee-gees-you-should-be-dancing.mp3");
-      audioRef.current.loop = true; // Enable looping
-      audioRef.current.volume = volume; // Set initial volume
+      audioRef.current.loop = true;
+      audioRef.current.volume = volume;
     }
 
-    // Cleanup on unmount
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
-        audioRef.current = null; // Clean up the audio object
+        audioRef.current = null;
       }
     };
   }, []);

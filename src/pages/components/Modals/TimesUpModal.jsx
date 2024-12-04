@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function TimesUpModal({ score, onRetry }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-none bg-opacity-70 z-50">
@@ -23,5 +25,9 @@ function TimesUpModal({ score, onRetry }) {
     </div>
   );
 }
+TimesUpModal.propTypes = {
+  score: PropTypes.number.isRequired,
+  onRetry: PropTypes.func.isRequired,
+};
 
 export default TimesUpModal;

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import Banner from "../components/Banner";
 import EndSessionModal from "../components/Modals/EndSessionModal";
@@ -68,43 +67,6 @@ function Game() {
       toast.error("Unexpected error:", error);
     }
   };
-
-  // /* removed */
-  //   const handleEndGameClick = () => {
-  //     setEndModalVisible(true);
-  //     pause();
-  //   };
-
-  //   const handleConfirmEndGame = async () => {
-  //     try {
-  //       const sessionData = {
-  //         PlayerId: getAuthUserId(),
-  //         Level: level,
-  //         SessionScore: score,
-  //       };
-  //       await endSession(sessionData);
-  //       console.log("Game session Ended successfully", getAuthUserId());
-
-  //       navigate("/game");
-  //     } catch (error) {
-  //       console.error("Error starting game session:", error);
-  //       toast.error(
-  //         "Oops! An unexpected error occurred. Please logging in again!"
-  //       );
-  //     }
-  //     navigate("/");
-  //   };
-
-  //   const handleCancelEndGame = () => {
-  //     setEndModalVisible(false);
-  //     start();
-  //   };
-
-  //   const handleAnswerChange = (e) => {
-  //     const value = e.target.value.slice(0, 1);
-  //     setAnswer(value);
-  //     setAnswerEmpty(false);
-  //   };
 
   const handleSubmit = async () => {
     if (!gameState.answer.trim()) {

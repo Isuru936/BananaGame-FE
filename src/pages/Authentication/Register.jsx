@@ -36,7 +36,6 @@ function Register() {
       }
 
       if (data.isSuccess) {
-        // Display the success message
         console.log("Success:", data.value);
         toast.success(data.value || "Signed up successfully!");
         navigate("/login");
