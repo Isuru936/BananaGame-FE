@@ -31,6 +31,7 @@ export const usePlayers = () => {
     const fetchPlayerById = async (id) => {
         if (fetchedPlayer === id || loadingPlayer) return; // Skip if player data already fetched or loading
         setLoadingPlayer(true);
+        
         try {
             const { data } = await axiosInstance.get(`/player/${id}`);
             if(data.isFailure){
@@ -40,8 +41,8 @@ export const usePlayers = () => {
         } catch (error) {
             setError(error);
         } finally {
-            setLoadingPlayer(false);
             setFetchedPlayer(id); // Mark the player as fetched
+            setLoadingPlayer(false);
         }
     };
 

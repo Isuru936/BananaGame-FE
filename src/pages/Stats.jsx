@@ -6,15 +6,27 @@ import ButtonGroup from "./components/ButtonGroup";
 
 function Stats() {
   const [player, setPlayer] = useState(null);
-  const { fetchPlayerById, loading, error } = usePlayers();
+  const [loading, setLoading] = useState(false);
+
+  const { fetchPlayerById } = usePlayers();
   const navigate = useNavigate();
+
   useEffect(() => {
-    const userId = getAuthUserId();
-    if (userId) {
-      fetchPlayerById(userId)
-        .then((data) => setPlayer(data.value))
-        .catch((err) => console.error("Error fetching player data:", err));
-    }
+    const fetchData = async () => {
+      setLoading(true); // Set loading to true before starting the fetch.
+
+      try {
+        const userId = getAuthUserId();
+        const data = await fetchPlayerById(userId);
+        setPlayer(data.value);
+      } catch (err) {
+        console.error("Error fetching player data:", err);
+      } finally {
+        setLoading(false); // Always set loading to false after fetching.
+      }
+    };
+
+    fetchData();
   }, []);
 
   const formatTime = (totalTime) => {
@@ -29,6 +41,19 @@ function Stats() {
     navigate("/");
   };
 
+  // if (loading) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       <img
+  //         src="/public/icons/line-md--loading-loop.png"
+  //         className="animate-spin"
+  //         style={{ width: "48px" }}
+  //         alt="Loading..."
+  //       />
+  //     </div>
+  //   );
+  // }
+
   return (
     <div
       className="flex flex-row w-screen h-screen border-2 bg-cover bg-center align-middle justify-center items-center"
@@ -38,17 +63,25 @@ function Stats() {
       }}
     >
       <div className="w-[75%] h-[75%] bg-[#ffffffe2] p-10">
-        <h1 className="metrophobic-regular text-4xl text-center text-[#776300] ">
+        <h1 className="metrophobic-regular text-4xl text-center text-[#776300]">
           Banana Game
         </h1>
         <div className="flex flex-row h-full justify-between p-8 rounded-lg">
           <div className="flex-2 flex-grow">
             {(() => {
               if (loading) {
-                return <p>Loading player data...</p>;
-              } else if (error) {
-                return <p>Error loading player data.</p>;
-              } else if (player) {
+                return (
+                  <div className="flex justify-center">
+                    <img
+                      src="/public/icons/line-md--loading-loop-black.png"
+                      className="animate-spin"
+                      style={{ width: "48px" }}
+                      alt="Loading..."
+                    />
+                  </div>
+                );
+              }
+              if (player) {
                 return (
                   <div className="text-left space-y-3 text-black life-savers-regular text-3xl">
                     <p>Username: {player.userName}</p>

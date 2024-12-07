@@ -3,7 +3,7 @@ import { usePlayers } from "../hooks/usePlayers";
 import { useEffect } from "react";
 
 function Leaderboard() {
-  const { players, loading, error, fetchPlayers } = usePlayers(); // Get players data from usePlayers hook
+  const { players, loading, error, fetchPlayers } = usePlayers();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,14 +14,10 @@ function Leaderboard() {
     navigate("/");
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div className="text-red-600">Error: {error}</div>;
   }
-  
+
   const playerList = (players?.value || []).sort(
     (a, b) => b.highestScore - a.highestScore
   );
@@ -37,32 +33,40 @@ function Leaderboard() {
         <h1 className="text-8xl font-bold mb-4 monofett-regular">
           Leaderboard
         </h1>
-
-        <div className="w-full">
-          <div className="flex justify-between border-b-2 border-gray-300 pb-2 mb-4 text-lg font-semibold life-savers-regular">
-            <span className="w-1/6 text-center">Rank</span>
-            <span className="w-2/3 text-left">Player</span>
-            <span className="w-1/6 text-right">Score</span>
+        {loading ? (
+          <div className="flex justify-center items-center h-full">
+            <img
+              src="/public/icons/line-md--loading-loop-black.png"
+              className="animate-spin"
+              style={{ width: "48px" }}
+              alt="Loading..."
+            />
           </div>
-
-          {playerList.map((player, index) => (
-            <div
-              key={player.id || index}
-              className="flex justify-between items-center py-2 px-4 rounded-md mb-2 text-black hover:bg-[#ffc24949] transition-colors life-savers-regular"
-            >
-              <span className="w-1/6 text-center font-bold text-lg text-[#8A732E]">
-                {index + 1}
-              </span>
-              <span className="w-2/3 text-left font-semibold">
-                {player.userName}
-              </span>
-              <span className="w-1/6 text-right font-semibold">
-                {player.highestScore}
-              </span>
+        ) : (
+          <div className="w-full">
+            <div className="flex justify-between border-b-2 border-gray-300 pb-2 mb-4 text-lg font-semibold life-savers-regular">
+              <span className="w-1/6 text-center">Rank</span>
+              <span className="w-2/3 text-left">Player</span>
+              <span className="w-1/6 text-right">Score</span>
             </div>
-          ))}
-        </div>
-
+            {playerList.map((player, index) => (
+              <div
+                key={player.id || index}
+                className="flex justify-between items-center py-2 px-4 rounded-md mb-2 text-black hover:bg-[#ffc24949] transition-colors life-savers-regular"
+              >
+                <span className="w-1/6 text-center font-bold text-lg text-[#8A732E]">
+                  {index + 1}
+                </span>
+                <span className="w-2/3 text-left font-semibold">
+                  {player.userName}
+                </span>
+                <span className="w-1/6 text-right font-semibold">
+                  {player.highestScore}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
         <button
           className="p-3 bg-black justify-center w-[90%] text-white rounded-full life-savers-regular flex h-fit text-2xl hover:scale-110 transition-transform duration-500"
           onClick={goToStart}

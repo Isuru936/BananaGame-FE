@@ -15,6 +15,7 @@ function Login() {
   const [loginData, setLoginData] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleLoginChange = (e) => {
     setLoginData({
@@ -25,6 +26,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       dispatch(loginStart());
@@ -59,6 +61,8 @@ function Login() {
     } catch (err) {
       toast.error("Failed to connect to the server. Please try again later.");
       dispatch(loginFailure(err.message));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -115,7 +119,7 @@ function Login() {
               </div>
               <button
                 type="submit"
-                className="text-white p-2 rounded-full mogra-regular border border-black border-3"
+                className="text-white p-2 rounded-full mogra-regular border border-black border-3 flex justify-center"
                 style={{
                   backgroundImage: "url('/icons/fxemoji--banana.png')",
                   backgroundSize: "cover",
@@ -123,7 +127,7 @@ function Login() {
                   backgroundRepeat: "no-repeat",
                 }}
               >
-                Login
+                {loading ? <img src="/public/icons/line-md--loading-loop-white.png" className="animate-spin" style={{width: "24px"}}/> : "Login"}
               </button>
             </form>
           </div>
