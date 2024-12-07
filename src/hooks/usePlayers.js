@@ -7,7 +7,7 @@ export const usePlayers = () => {
     const [loading, setLoading] = useState(false);
     const [loadingPlayer, setLoadingPlayer] = useState(false);
     const [error, setError] = useState(null);
-    const [dataFetched, setDataFetched] = useState(false); // Flag for list of players
+    const [dataFetched, setDataFetched] = useState(false);
     const [fetchedPlayer, setFetchedPlayer] = useState(null); // Flag for individual player
 
     const logout = useLogout();
