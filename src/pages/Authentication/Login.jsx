@@ -38,6 +38,7 @@ function Login() {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials: true,
         }
       );
 
@@ -127,7 +128,15 @@ function Login() {
                   backgroundRepeat: "no-repeat",
                 }}
               >
-                {loading ? <img src="/icons/line-md--loading-loop-white.png" className="animate-spin" style={{width: "24px"}}/> : "Login"}
+                {loading ? (
+                  <img
+                    src="/icons/line-md--loading-loop-white.png"
+                    className="animate-spin"
+                    style={{ width: "24px" }}
+                  />
+                ) : (
+                  "Login"
+                )}
               </button>
             </form>
           </div>

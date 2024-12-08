@@ -22,6 +22,7 @@ function Register() {
 
       const res = await fetch("https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/authentication/authentication/signUp", {
         method: "POST",
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
