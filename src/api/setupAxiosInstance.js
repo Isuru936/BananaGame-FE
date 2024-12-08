@@ -13,7 +13,7 @@ const getAuthToken = () => {
 
 export const setupAxiosInstance = (logoutHandler) => {
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:5189/api",
+    baseURL: "https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/api",
     headers: {
       Authorization: `Bearer ${getAuthToken()}`,
       "Content-Type": "application/json",

@@ -20,7 +20,7 @@ function Register() {
     try {
       console.log(formData);
 
-      const res = await fetch("http://localhost:5189/authentication/signUp", {
+      const res = await fetch("https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/authentication/authentication/signUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

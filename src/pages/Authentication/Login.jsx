@@ -32,7 +32,7 @@ function Login() {
       dispatch(loginStart());
 
       const res = await axios.post(
-        "http://localhost:5189/authentication/signin",
+        "https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/authentication/signin",
         loginData,
         {
           headers: {
