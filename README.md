@@ -1,20 +1,69 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Banana Game Deployment and Repository Information
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Deployed Game
+You can access the deployed Banana Game using the following link:  
+[Banana Game](https://witty-forest-077d05c10.4.azurestaticapps.net/)
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Repositories
+- **Frontend Repository**: [Banana Game Frontend](https://github.com/Isuru936/BananaGame-FE)
+- **Backend Repository**: [Banana Game Backend](https://github.com/Isuru936/BananaGame-BE.git)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+---
+
+## Backend Configuration Guide
+
+1. **Clone the Backend Repository**  
+   Clone the backend repository from the following link:  
+   [Banana Game Backend](https://github.com/Isuru936/BananaGame-BE.git)
+
+2. **Set Configuration Values**  
+   After cloning, navigate to the `appsettings.Development.json` file and configure the connection string as follows:
+   ```json
+   "ConnectionStrings": {
+       "DefaultConnection": "<SET THE CONNECTION STRING>"
+   }
+   ```
+
+   Next, configure the `appsettings.json` file with your JWT settings:
+   ```json
+   "JWT": {
+       "ValidAudience": "http://localhost:7087",
+       "ValidIssuer": "http://localhost:7087",
+       "Secret": "<SET-YOUR-36-CHARACTER-SECRET-HERE>"
+   }
+   ```
+
+3. **Run Migrations**  
+   The backend uses a SQL database. To set up the database, run the following commands in the Package Manager Console:
+   ```bash
+   update-database -context ApplicationDbContext
+   update-database -context IdentityDatabaseContext
+   ```
+
+4. **Run the Backend Program**  
+   Once the migrations are complete, you can start the backend program.
+
+---
+
+## Frontend Configuration Guide
+
+1. **Clone the Frontend Repository**  
+   Clone the frontend repository from the following link:  
+   [Banana Game Frontend](https://github.com/Isuru936/BananaGame-FE)
+
+2. **Install Node Modules**  
+   Navigate to the project directory and install the required dependencies by running:  
+   ```bash
+   npm install
+   ```
+
+3. **Run the Frontend Application**  
+   Start the development server and enjoy the game:  
+   ```bash
+   npm run dev
+   ```
+
+---
+
+If you need further assistance, feel free to reach out!
