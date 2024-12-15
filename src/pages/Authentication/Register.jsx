@@ -20,7 +20,7 @@ function Register() {
     try {
       console.log(formData);
 
-      const res = await fetch("https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/authentication/authentication/signUp", {
+      const res = await fetch("https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/authentication/signUp", {
         method: "POST",
         withCredentials: true,
         headers: {
