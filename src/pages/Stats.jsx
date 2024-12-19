@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { usePlayers } from "../hooks/usePlayers";
 import { getAuthUserId } from "../hooks/getAuthUserId";
 import ButtonGroup from "./components/ButtonGroup";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 function Stats() {
   const [player, setPlayer] = useState(null);
@@ -71,13 +72,8 @@ function Stats() {
             {(() => {
               if (loading) {
                 return (
-                  <div className="flex justify-center">
-                    <img
-                      src="/public/icons/line-md--loading-loop-black.png"
-                      className="animate-spin"
-                      style={{ width: "48px" }}
-                      alt="Loading..."
-                    />
+                  <div className="flex justify-center items-center h-full">
+                    <Icon icon="line-md:loading-loop" className="text-white" />
                   </div>
                 );
               }

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 function Register() {
   const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,17 +18,21 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       console.log(formData);
 
-      const res = await fetch("https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/authentication/signUp", {
-        method: "POST",
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://bananagame-be-cqaffchrgjegajda.centralus-01.azurewebsites.net/authentication/signUp",
+        {
+          method: "POST",
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await res.json();
 
@@ -44,6 +49,8 @@ function Register() {
     } catch (error) {
       console.error("Fetch error:", error);
       alert("An unexpected error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -123,8 +130,9 @@ function Register() {
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
                 }}
+                disabled={loading}
               >
-                Register
+                {loading ? "Loading..." : "Register"}
               </button>
             </form>
           </div>

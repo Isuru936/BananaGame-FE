@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { usePlayers } from "../hooks/usePlayers";
 import { useEffect } from "react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 function Leaderboard() {
   const { players, loading, error, fetchPlayers } = usePlayers();
@@ -35,12 +36,7 @@ function Leaderboard() {
         </h1>
         {loading ? (
           <div className="flex justify-center items-center h-full">
-            <img
-              src="/public/icons/line-md--loading-loop-black.png"
-              className="animate-spin"
-              style={{ width: "48px" }}
-              alt="Loading..."
-            />
+            <Icon icon="line-md:loading-loop" className="text-white" />
           </div>
         ) : (
           <div className="w-full">

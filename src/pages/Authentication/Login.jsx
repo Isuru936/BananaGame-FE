@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 function Login() {
   const [loginData, setLoginData] = useState({});
@@ -129,11 +130,9 @@ function Login() {
                 }}
               >
                 {loading ? (
-                  <img
-                    src="/icons/line-md--loading-loop-white.png"
-                    className="animate-spin"
-                    style={{ width: "24px" }}
-                  />
+                  <div className="flex justify-center items-center h-full">
+                    <Icon icon="line-md:loading-loop" className="text-white" />
+                  </div>
                 ) : (
                   "Login"
                 )}

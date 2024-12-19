@@ -5,6 +5,7 @@ import Banner from "./components/Banner";
 import ButtonGroup from "./components/ButtonGroup";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -53,15 +54,15 @@ export default function Index() {
         <div className="space-y-12">
           <div className="flex justify-center">
             <button
-              className={`text-3xl p-5 border-2 border-black rounded-full w-92 transition-all duration-300 nosifer-regular ${loading ? "" : "hover:bg-black hover:text-white"}  hover:border-yellow-200`}
+              className={`text-3xl p-5 border-2 border-black rounded-full w-92 transition-all duration-300 nosifer-regular ${
+                loading ? "" : "hover:bg-black hover:text-white"
+              }  hover:border-yellow-200`}
               onClick={startGame}
             >
               {loading ? (
-                <img
-                  src="/public/icons/line-md--loading-loop-black.png"
-                  className="animate-spin"
-                  style={{ width: "24px" }}
-                />
+                <div className="flex justify-center items-center h-full">
+                  <Icon icon="line-md:loading-loop" className="text-white" />
+                </div>
               ) : (
                 "Start Game"
               )}
