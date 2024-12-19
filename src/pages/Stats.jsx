@@ -41,20 +41,7 @@ function Stats() {
   const goToMainMenu = () => {
     navigate("/");
   };
-
-  // if (loading) {
-  //   return (
-  //     <div className="flex justify-center items-center h-screen">
-  //       <img
-  //         src="/public/icons/line-md--loading-loop.png"
-  //         className="animate-spin"
-  //         style={{ width: "48px" }}
-  //         alt="Loading..."
-  //       />
-  //     </div>
-  //   );
-  // }
-
+  
   return (
     <div
       className="flex flex-row w-screen h-screen border-2 bg-cover bg-center align-middle justify-center items-center"
@@ -71,9 +58,11 @@ function Stats() {
           <div className="flex-2 flex-grow">
             {(() => {
               if (loading) {
+                console.log("Loading");
+                
                 return (
                   <div className="flex justify-center items-center h-full">
-                    <Icon icon="line-md:loading-loop" className="text-white" />
+                    <Icon icon="line-md:loading-loop" className="text-black text-2xl" />
                   </div>
                 );
               }

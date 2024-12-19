@@ -49,10 +49,19 @@ function Game() {
   const fetchQuestion = async () => {
     try {
       setGameState((prev) => ({ ...prev, isLoading: true }));
+      console.log("Fetching question:", gameState.isLoading);
+      
       const question = await getQuestion();
-      setGameState((prev) => ({ ...prev, questionData: question, isLoading: false }));
+      setGameState((prev) => ({
+        ...prev,
+        questionData: question,
+        isLoading: false,
+      }));
     } catch (error) {
       console.error("Error fetching question:", error);
+    } finally {
+      console.log("Question fetched:", gameState.isLoading);
+      
     }
   };
 
@@ -160,36 +169,34 @@ function Game() {
           )}
         </button>
       </nav>
-      
-      <div className="flex justify-evenly w-screen">
+
+      <div className="flex justify-evenly w-screen h-screen">
         <div className="divide-y-8">
           <h1 className="mogra-regular text-6xl text-[#A4A7C2]">
             Level {gameState.level}
           </h1>
 
           {gameState.questionData && !gameState.isTimeUp && (
-            <div className="relative">
-              {gameState.isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 w-full h-64">
+            <div className="w-full h-96">
+              {gameState.isLoading ? (
+                <div className="absolute inset-0 flex items-center justify-center animate-pulse bg-white bg-opacity-50 w-full h-64">
                   <img
                     src="icons/codicon--loading.png"
                     alt="loading"
                     className="animate-spin w-16 h-26"
                   />
-                  <span className="text-3xl text-gray-500">
-                    Loading Question...
-                  </span>
                 </div>
+              ) : (
+                <img
+                  src={gameState.questionData?.question}
+                  alt="Question"
+                  className="border-[#10358a31] w-fit h-auto"
+                  style={{
+                    borderWidth: "14px",
+                    opacity: gameState.isLoading ? 0.5 : 1,
+                  }}
+                />
               )}
-              <img
-                src={gameState.questionData?.question}
-                alt="Question"
-                className="border-[#10358a31]"
-                style={{
-                  borderWidth: "14px",
-                  opacity: gameState.isLoading ? 0.5 : 1,
-                }}
-              />
             </div>
           )}
 
@@ -261,7 +268,7 @@ function Game() {
   );
 }
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const ScoreBox = ({ label, value }) => (
   <div className="border-4 rounded-lg w-52 h-32 p-3 border-[#082790]">
@@ -276,7 +283,5 @@ ScoreBox.propTypes = {
 };
 
 export default Game;
-
-
 
 // LOST LOADING AND SHAKE FEATURE

@@ -36,7 +36,7 @@ function Leaderboard() {
         </h1>
         {loading ? (
           <div className="flex justify-center items-center h-full">
-            <Icon icon="line-md:loading-loop" className="text-white" />
+            <Icon icon="line-md:loading-loop" className="text-black text-2xl" />
           </div>
         ) : (
           <div className="w-full">
