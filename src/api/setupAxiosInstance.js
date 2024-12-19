@@ -28,7 +28,7 @@ export const setupAxiosInstance = (logoutHandler) => {
     (error) => {
       console.log("Error occurredasda:", error);
 
-      if (error.code === "ERR_NETWORK") {
+      if (error.code === "ERR_NETWORK" || error.response.status == 401) {
         console.log("Token expired or invalid. Logging out user.");
         toast.info("Session Expired. Logging you out")
         if (logoutHandler) {
