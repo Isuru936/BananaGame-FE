@@ -3,7 +3,7 @@
 
 ## Deployed Game
 You can access the deployed Banana Game using the following link:  
-[Banana Game](https://witty-forest-077d05c10.4.azurestaticapps.net/)
+[Banana Game](https://witty-forest-077d05c10.4.azurestaticapps.net/) - NOT WORKING, OUT OF JUICE (CREDITS)
 
 ## Repositories
 - **Frontend Repository**: [Banana Game Frontend](https://github.com/Isuru936/BananaGame-FE)
